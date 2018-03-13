@@ -41,7 +41,8 @@ def find_new_file(ZIP_PATH):
     file_list = [file for file in file_list if os.path.isfile(file)]
     new_file = max(file_list, key=os.path.getctime)
     return(new_file)
-#Функция отправки дописываем
+
+#Функция отправки писем 
 def mail(msg_txt):
     fromaddr = 'Mr. Robot <mrrobot@domain.com>'
     toaddr = 'Administrator <admin@domain.com>'
