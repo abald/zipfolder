@@ -4,6 +4,7 @@ import zipfile
 import datetime
 import time
 import logging
+import smtplib
 
 logging.basicConfig(filename="result.log", level=logging.INFO)
 logging.info("Старт программы архивации.")
@@ -40,8 +41,19 @@ def find_new_file(ZIP_PATH):
     file_list = [file for file in file_list if os.path.isfile(file)]
     new_file = max(file_list, key=os.path.getctime)
     return(new_file)
-
-
+#Функция отправки дописываем
+def mail(msg_txt):
+    fromaddr = 'Mr. Robot <mrrobot@domain.com>'
+    toaddr = 'Administrator <admin@domain.com>'
+    subj = 'Notification from system'
+    msg = "From: %s\nTo: %s\nSubject: %s\n\n%s"  % ( fromaddr, toaddr, subj, msg_txt)
+    username = 'mrrobot'
+    password = 'password'
+    server = smtplib.SMTP('smtp.domain.com:587')
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(fromaddr, toaddr, msg)
+    server.quit()
 
 # Проверяем есть ли файл:
 # если нет то создаем новый архив
