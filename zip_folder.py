@@ -5,11 +5,11 @@ import datetime
 import time
 import logging
 
-logging.basicConfig(filename="sample.log", level=logging.INFO)
+logging.basicConfig(filename="result.log", level=logging.INFO)
 logging.info("Старт программы архивации.")
 
-WORK_PATH = 'W:\\Тест\\' #Директория которую архивируем
-ZIP_PATH =  'W:\\arc\\' #Директория куда архивируем
+WORK_PATH = ' ' #Директория которую архивируем
+ZIP_PATH =  ' ' #Директория куда архивируем
 
 log_time = time.ctime(time.time())
 date = datetime.datetime.today().strftime("%d-%m-%Y")
